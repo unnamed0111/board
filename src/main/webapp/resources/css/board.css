@@ -1,0 +1,167 @@
+@import url(common.css);
+@import url(header.css);
+
+h3 { margin-top: 100px; }
+
+.title { margin-top: 20px; }
+
+.title h4 {
+    font-weight: normal;
+    line-height: 2.25em;
+    border-top: 2px solid black;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.title table {
+    width: 100%;
+    height: 2em;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.list table { width: 100%; }
+
+.list caption { 
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.list table thead { 
+    border-bottom: 1px solid black;
+    line-height: 30px;
+}
+
+.list table th:nth-child(1),
+.list table th:nth-child(3) { width: 100px; }
+
+.list table th:last-child { width: 80px; }
+
+.list tbody {
+    border-top: 2px solid black;
+}
+
+.list .comment { 
+    line-height: 40px;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.list tbody tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.list .comment td:not(:nth-child(2)) { text-align: center; }
+
+.list .comment td:nth-child(1),
+.list .comment td:nth-child(3) {
+    width: 140px;
+}
+
+.list .comment td:last-child {
+    width: 80px;
+}
+
+.list .comment td a { display: block; }
+
+.list .comment td button {
+    float: left;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.list .comment td time {
+    font-size: 0.75em;
+}
+
+.list .reply-element {
+    background-color: white;
+}
+
+.list .reply-element td:nth-child(2) {
+    text-indent: 20px;
+}
+
+.content {
+    width: 100%;
+    padding: 10px 0;
+    resize: none;
+    border: 0;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 1.25em;
+}
+
+.tool::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.tool a {
+    display: block;
+    padding: 10px;
+    margin-left: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    float: right;
+    background-color: #59f800;
+    font-weight: bold;
+}
+
+.form-comment {
+    padding: 10px;
+    /* border-radius: 10px; */
+    /* border: 1px solid rgba(0, 0, 0, 0.1); */
+}
+
+.reply .form-comment {
+    border-radius: 0;
+    border: 0;
+}
+
+.form-comment * {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.form-comment > label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.form-comment > label > span {
+    font-weight: bold;
+}
+
+.form-comment > div > * {
+    float: left;
+}
+
+.form-comment > div::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.form-comment > div textarea {
+    width: 90%;
+    height: 80px;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px 0 0 10px;
+    box-sizing: border-box;
+    resize: none;
+}
+
+.form-comment > div button {
+    border-radius: 0 10px 10px 0;
+    width: 10%;
+    height: 80px;
+}
+
+.close {
+    display: none;
+}

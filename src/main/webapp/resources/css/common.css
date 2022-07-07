@@ -1,0 +1,36 @@
+body,
+ul,
+li,
+p,
+a,
+h1,
+h2,
+h3,
+h4,
+table,
+th,
+tr,
+td {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-decoration: none;
+    color: black;
+    border-collapse: collapse;
+}
+
+main {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.hidden {
+    position: absolute;
+    left: -9999px;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

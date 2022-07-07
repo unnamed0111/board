@@ -1,0 +1,54 @@
+@import url(common.css);
+
+.reg-form {
+    position: absolute;
+    left: calc(50% - 200px);
+    top: calc(50% - 233px);
+    width: 400px;
+    height: 466px;
+}
+
+h1 {
+    text-align: center;
+    line-height: 50px;
+}
+
+fieldset {
+    /* height: 400px; */
+    margin: 0;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+legend {
+    margin: 0 auto;
+    font-size: 2em;
+
+}
+
+fieldset > input,
+fieldset > button {
+    display: block;
+    width: 100%;
+}
+
+fieldset > input {
+    margin-bottom: 10px;
+    padding: 0;
+    line-height: 1.5em;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+}
+
+fieldset > button {
+    margin-top: 100px;
+    padding: 0;
+    border: 0;
+    line-height: 3em;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: #59f800;
+}

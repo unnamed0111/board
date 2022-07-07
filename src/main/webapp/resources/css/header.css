@@ -1,0 +1,28 @@
+.top-menu {
+    height: 50px;
+    padding: 0 20px;
+    line-height: 50px;
+    background-color: #59f800;
+}
+
+.top-menu h1 {
+    float: left;
+}
+
+.top-menu nav {
+    float: right;
+    /* margin-right: 20px; */
+}
+
+.top-menu nav * {
+    float: left;
+}
+
+.top-menu nav h2,
+.top-menu nav a {
+    font-size: 2em;
+}
+
+.top-menu nav a {
+    padding-left: 20px;
+}

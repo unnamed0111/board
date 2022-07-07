@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.board.app.dao.CommentMapper">
+    <select id="selectByBoardId" parameterType="int" resultType="Comment">
+        SELECT
+            comment_id          AS commentId,
+            user_id             AS userId,
+            comment_content     AS commentContent,
+            comment_reg_date    AS commentRegDate,
+            comment_up_date     AS commentUpDate,
+            IFNULL(comment_parent_id, comment_id) AS commentParentId,
+            board_id            AS boardId
+        FROM comment
+        WHERE board_id = #{id}
+        ORDER BY commentParentId DESC, commentRegDate ASC;
+    </select>
+
+    <insert id="insert" parameterType="Comment">
+        INSERT INTO comment
+        (user_id, comment_content, board_id, comment_parent_id)
+        VALUES (#{userId}, #{commentContent}, #{boardId}, #{commentParentId});
+    </insert>
+
+    <update id="update" parameterType="Comment">
+        UPDATE comment
+        SET comment_content = #{commentContent}, comment_up_date = NOW()
+        WHERE comment_id = #{commentId} AND user_id = #{userId};
+    </update>
+
+    <delete id="delete" parameterType="Comment">
+        DELETE FROM comment
+        WHERE comment_id = #{commentId} AND user_id = #{userId};
+    </delete>
+
+    <delete id="deleteByBoardId" parameterType="Board">
+        DELETE FROM comment
+        WHERE board_id = #{boardId};
+    </delete>
+</mapper>

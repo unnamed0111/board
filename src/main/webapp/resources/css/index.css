@@ -1,0 +1,43 @@
+@import url(common.css);
+@import url(header.css);
+
+.list {
+    float: left;
+    width: calc((100% - 20px) / 3);
+    margin-top: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    transition: background-color 0.25s;
+}
+
+.list:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.list:not(:last-child) {
+    margin-right: 10px;
+}
+
+.list h3 {
+    border-bottom: 4px solid #47d300;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.list ul {
+    height: 250px;
+}
+
+.list li a {
+    display: block;
+    line-height: 25px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.list li a:hover {
+    text-decoration: underline;
+}

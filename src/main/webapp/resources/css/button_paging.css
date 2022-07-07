@@ -1,0 +1,38 @@
+.paging {
+    text-align: center;
+    height: 40px;
+}
+
+.paging ul {
+    display: inline-block;
+}
+
+.paging li {
+    float: left;
+}
+
+.paging li a {
+    display: block;
+    line-height: 38px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+.paging li:not(:last-child) a {
+    margin-right: 10px;
+}
+
+.paging li:first-child a,
+.paging li:last-child a {
+    width: 58px;
+}
+
+.paging li:not(:first-child, :last-child) a {
+    width: 38px;
+}
+
+.paging li.selected a {
+    border-color: #59f800;
+    background-color: #59f800;
+}

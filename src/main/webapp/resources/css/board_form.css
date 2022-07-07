@@ -1,0 +1,73 @@
+@import url(common.css);
+@import url(header.css);
+
+h3 {
+    margin-top: 100px;
+    margin-bottom: 20px;
+}
+
+h4 {
+    border-bottom: 2px solid black;
+    line-height: 2.25em;
+}
+
+.form-board {
+    width: 100%;
+}
+
+.form-board tr {
+    line-height: 2.25em;
+}
+
+.form-board tr > * {
+    padding: 10px 0;
+}
+
+.form-board th {
+    width: 100px;
+    text-align: left;
+}
+
+.form-board tr:last-child th {
+    vertical-align: top;
+}
+
+.form-board tr:nth-child(2) td input {
+    color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.form-board td > * {
+    margin: 0;
+    padding: 0;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    width: 100%;
+    float: left;
+}
+
+.form-board input {
+    height: 2.25em;
+    text-indent: 10px;
+}
+
+.form-board textarea {
+    height: 300px;
+    padding: 10px;
+    resize: vertical;
+    min-height: 100px;
+}
+
+.btn-write {
+    height: 40px;
+}
+
+.btn-write button {
+    float: right;
+    width: 100px;
+    height: 100%;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #59f800;
+}

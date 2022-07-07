@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.board.app.dao.BoardMapper">
+    <delete id="delete" parameterType="Board">
+        DELETE FROM board
+        WHERE board_id = #{boardId} AND user_id = #{userId};
+    </delete>
+
+    <insert id="insert" parameterType="Board">
+        INSERT INTO board
+        (board_title, user_id, board_content)
+        VALUES (#{boardTitle}, #{userId}, #{boardContent});
+    </insert>
+
+    <update id="updateViewCnt" parameterType="map">
+        UPDATE board
+        SET board_view_cnt = board_view_cnt + #{cnt}
+        WHERE board_id = #{boardId};
+    </update>
+
+    <update id="updateCommentCnt" parameterType="map">
+        UPDATE board
+        SET board_comment_cnt = board_comment_cnt + #{cnt}
+        WHERE board_id = #{boardId};
+    </update>
+
+    <update id="update" parameterType="Board">
+        UPDATE board
+        SET
+            board_title = #{boardTitle},
+            board_content = #{boardContent},
+            board_up_date = NOW()
+        WHERE user_id = #{userId} AND board_id = #{boardId};
+    </update>
+
+    <select id="selectById" parameterType="int" resultType="Board">
+        SELECT
+            board_id            AS boardId,
+            board_title         AS boardTitle,
+            user_id             AS userId,
+            board_content       AS boardContent,
+            board_reg_date      AS boardRegDate,
+            board_up_date       AS boardUpDate,
+            board_view_cnt      AS boardViewCnt,
+            board_comment_cnt   AS boardCommentCnt,
+            board_like_cnt      AS boardLikeCnt
+        FROM board WHERE board_id = #{id};
+    </select>
+
+    <select id="selectByPage" resultType="Board">
+        SELECT
+            board_id            AS boardId,
+            board_title         AS boardTitle,
+            user_id             AS userId,
+            board_content       AS boardContent,
+            board_reg_date      AS boardRegDate,
+            board_up_date       AS boardUpDate,
+            board_view_cnt      AS boardViewCnt,
+            board_comment_cnt   AS boardCommentCnt,
+            board_like_cnt      AS boardLikeCnt
+        FROM board
+        ORDER BY boardRegDate DESC, boardId DESC
+        LIMIT 0, 10;
+    </select>
+</mapper>

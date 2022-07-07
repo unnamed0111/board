@@ -1,0 +1,70 @@
+@import url(common.css);
+@import url(header.css);
+@import url(button_paging.css);
+
+.list {
+    margin-top: 100px;
+}
+
+.list table {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.list tr {
+    height: 50px;
+}
+
+.list thead tr:first-child {
+    border-top: 2px solid black;
+    border-bottom: 1px solid black;
+}
+
+.list tbody tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.list tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.list th:nth-child(1),
+.list th:nth-child(4),
+.list th:nth-child(5) {
+    width: 100px;
+}
+
+.list th:nth-child(3),
+.list th:nth-child(6),
+.list th:nth-child(7) {
+    width: 80px;
+}
+
+.list td:not(:nth-child(2)) {
+    text-align: center;
+}
+
+.list .tool {
+    margin-top: 20px;
+    height: 40px;
+}
+
+.list .search { float: left; }
+
+.list .search {
+    height: 100%;
+    line-height: 40px;
+}
+
+.list .btn-write {
+    float: right;
+    width: 80px;
+    line-height: 40px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #59f800;
+}
+
+.list .paging {
+    margin-top: 20px;
+}

@@ -1,0 +1,85 @@
+@import url(common.css);
+
+html, body, main {
+    height: 100%;
+}
+
+h1 {
+    text-align: center;
+}
+
+.form-login {
+    width: 300px;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.form-login fieldset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.form-login legend {
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.tbl-login {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.tbl-login tr > * {
+    padding-bottom: 10px;
+}
+
+.tbl-login input {
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-indent: 5px;
+    float: left;
+}
+
+.tbl-login th {
+    width: 80px;
+    text-align: left;
+}
+
+.list {
+    margin-bottom: 10px;
+    height: 20px;
+}
+
+.list li {
+    width: 50%;
+    text-align: center;
+    float: left;
+    line-height: 20px;
+    box-sizing: border-box;
+}
+
+.list li:first-child {
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.btn-login {
+    height: 60px;
+}
+
+.btn-login button {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 2em;
+    background-color: #59f800;
+}
