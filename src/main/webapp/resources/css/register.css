@@ -1,5 +1,9 @@
 @import url(common.css);
 
+.msg {
+    text-indent: 20px;
+}
+
 .reg-form {
     position: absolute;
     left: calc(50% - 200px);
@@ -25,6 +29,10 @@ legend {
     margin: 0 auto;
     font-size: 2em;
 
+}
+
+fieldset > label {
+    display: block;
 }
 
 fieldset > input,

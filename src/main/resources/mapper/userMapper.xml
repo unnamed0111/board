@@ -30,4 +30,9 @@
         FROM user
         WHERE user_id = #{userId};
     </select>
+
+    <select id="selectUserExisted" resultType="int">
+        SELECT COUNT(*) FROM user
+        WHERE user_id = #{id}
+    </select>
 </mapper>
