@@ -57,13 +57,15 @@
         </div>
         <div class="paging">
             <ul>
-                <li><a href="">이전</a></li>
-                <li class="selected"><a href="">1</a></li>
-                <li><a href="">2</a></li>
-                <li><a href="">3</a></li>
-                <li><a href="">4</a></li>
-                <li><a href="">5</a></li>
-                <li><a href="">다음</a></li>
+                <c:if test="${paging.showPrev}">
+                <li><a class="btn-paging" href="<c:url value='/board/list'/>?page=${paging.beginPage - 1}">이전</a></li>
+                </c:if>
+                <c:forEach var="i" begin="${paging.beginPage}" end="${paging.endPage}">
+                <li <c:if test="${paging.page == i}">class="selected"</c:if>><a href="<c:url value='/board/list'/>?page=${i}">${i}</a></li>
+                </c:forEach>
+                <c:if test="${paging.showNext}">
+                <li><a class="btn-paging" href="<c:url value='/board/list'/>?page=${paging.endPage + 1}">다음</a></li>
+                </c:if>
             </ul>
         </div>
     </section>

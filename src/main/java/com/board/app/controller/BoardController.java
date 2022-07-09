@@ -3,6 +3,7 @@ package com.board.app.controller;
 import com.board.app.dao.BoardDao;
 import com.board.app.dao.UserDao;
 import com.board.app.domain.Board;
+import com.board.app.domain.Paging;
 import com.board.app.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,12 +30,14 @@ public class BoardController {
 //        this.boardDao = boardDao;
     }
 
+    // app/board/list?page=1&keyword=&
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String getList(Model m) throws Exception {
+    public String getList(Paging paging, Model m) throws Exception {
 
-        List<Board> boardList = boardService.getList();
+        List<Board> boardList = boardService.getList(paging);
 
         m.addAttribute("boardList", boardList);
+        m.addAttribute("paging", paging);
 
         return "boardList";
     }

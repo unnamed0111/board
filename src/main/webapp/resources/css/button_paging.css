@@ -23,12 +23,20 @@
     margin-right: 10px;
 }
 
-.paging li:first-child a,
-.paging li:last-child a {
+/*.paging li:first-child a,*/
+/*.paging li:last-child a {*/
+/*    width: 58px;*/
+/*}*/
+
+/*.paging li:not(:first-child, :last-child) a {*/
+/*    width: 38px;*/
+/*}*/
+
+.paging li a {
     width: 58px;
 }
 
-.paging li:not(:first-child, :last-child) a {
+.paging li a:not(.btn-paging) {
     width: 38px;
 }
 

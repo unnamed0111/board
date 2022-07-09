@@ -49,7 +49,7 @@
         FROM board WHERE board_id = #{id};
     </select>
 
-    <select id="selectByPage" resultType="Board">
+    <select id="selectByPageDefault" resultType="Board">
         SELECT
             board_id            AS boardId,
             board_title         AS boardTitle,
@@ -63,5 +63,25 @@
         FROM board
         ORDER BY boardRegDate DESC, boardId DESC
         LIMIT 0, 10;
+    </select>
+
+    <select id="selectByPage" parameterType="map" resultType="Board">
+        SELECT
+            board_id            AS boardId,
+            board_title         AS boardTitle,
+            user_id             AS userId,
+            board_content       AS boardContent,
+            board_reg_date      AS boardRegDate,
+            board_up_date       AS boardUpDate,
+            board_view_cnt      AS boardViewCnt,
+            board_comment_cnt   AS boardCommentCnt,
+            board_like_cnt      AS boardLikeCnt
+        FROM board
+        ORDER BY boardRegDate DESC, boardId DESC
+        LIMIT #{begin}, #{size};
+    </select>
+
+    <select id="selectCnt" resultType="int">
+        SELECT COUNT(*) FROM board;
     </select>
 </mapper>

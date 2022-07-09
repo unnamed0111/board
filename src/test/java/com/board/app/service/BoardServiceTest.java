@@ -16,6 +16,18 @@ public class BoardServiceTest {
     BoardService boardService;
 
     @Test
+    public void writeTest() throws Exception {
+        for (int i = 0; i < 120; i++) {
+            Board board = new Board();
+            board.setUserId("kimpope");
+            board.setBoardTitle("TEST" + i);
+            board.setBoardContent("TEST" + i);
+
+            boardService.write(board);
+        }
+    }
+
+    @Test
     public void removeTest() throws Exception {
         Board board = new Board();
         board.setUserId("asdf");

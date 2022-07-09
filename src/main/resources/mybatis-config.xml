@@ -7,5 +7,6 @@
         <typeAlias alias="User" type="com.board.app.domain.User"/>
         <typeAlias alias="Board" type="com.board.app.domain.Board"/>
         <typeAlias alias="Comment" type="com.board.app.domain.Comment"/>
+        <typeAlias alias="Paging" type="com.board.app.domain.Paging"/>
     </typeAliases>
 </configuration>

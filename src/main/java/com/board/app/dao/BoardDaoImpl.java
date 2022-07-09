@@ -1,6 +1,7 @@
 package com.board.app.dao;
 
 import com.board.app.domain.Board;
+import com.board.app.domain.Paging;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -47,7 +48,15 @@ public class BoardDaoImpl implements BoardDao {
 
     @Override
     public List<Board> selectByPage() throws Exception {
-        return session.selectList(namespace + "selectByPage");
+        return session.selectList(namespace + "selectByPageDefault");
+    }
+
+    @Override
+    public List<Board> selectByPage(Paging paging) throws Exception {
+        Map map = new HashMap();
+        map.put("begin", (paging.getPage() - 1) * paging.getPageSize());
+        map.put("size", paging.getPageSize());
+        return session.selectList(namespace + "selectByPage", map);
     }
 
     @Override
@@ -58,5 +67,10 @@ public class BoardDaoImpl implements BoardDao {
     @Override
     public Integer delete(Board board) throws Exception {
         return session.delete(namespace + "delete", board);
+    }
+
+    @Override
+    public Integer selectCount() throws Exception {
+        return session.selectOne(namespace + "selectCnt");
     }
 }

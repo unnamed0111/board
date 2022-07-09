@@ -3,6 +3,7 @@ package com.board.app.service;
 import com.board.app.dao.BoardDao;
 import com.board.app.dao.CommentDao;
 import com.board.app.domain.Board;
+import com.board.app.domain.Paging;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,12 @@ public class BoardService {
         return boardDao.selectById(boardId);
     }
 
+    public List<Board> getList(Paging paging) throws Exception {
+        paging.setTotalCnt(getSize());
+        paging.doPaging();
+        return boardDao.selectByPage(paging);
+    }
+
     public List<Board> getList() throws Exception {
         return boardDao.selectByPage();
     }
@@ -45,5 +52,9 @@ public class BoardService {
     public Integer remove(Board board) throws Exception {
         commentDao.deleteByBoardId(board);
         return boardDao.delete(board);
+    }
+
+    public Integer getSize() throws Exception {
+        return boardDao.selectCount();
     }
 }

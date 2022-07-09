@@ -1,6 +1,7 @@
 package com.board.app.dao;
 
 import com.board.app.domain.Board;
+import com.board.app.domain.Paging;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,11 @@ public class BoardDaoTest {
         List<Board> boardList = boardDao.selectByPage();
 
         System.out.println("boardList = " + boardList);
+    }
+
+    @Test
+    public void selectByPage2Test() throws Exception {
+
     }
 
     @Test
