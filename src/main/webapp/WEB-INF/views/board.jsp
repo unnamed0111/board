@@ -171,7 +171,7 @@
           showCommentList();
         },
         error: function (err) {
-          alert(err);
+          alert(err.responseText);
         } // 에러가 발생했을 때, 호출될 함수
       }); // $.ajax()
     }
@@ -201,7 +201,7 @@
           showCommentList();
         },
         error: function (err) {
-          alert(err);
+          alert(err.responseText);
         } // 에러가 발생했을 때, 호출될 함수
       }); // $.ajax()
     }
@@ -232,7 +232,8 @@
           showCommentList();
         },
         error: function (err) {
-          alert(err);
+          // console.log(err.responseText);
+          alert(err.responseText);
         } // 에러가 발생했을 때, 호출될 함수
       }); // $.ajax()
     });

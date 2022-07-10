@@ -1,44 +1,38 @@
 package com.board.app.domain;
 
-public class Paging {
-    private Integer page = 1; // 현재 페이지, 사용자 입력
+import org.springframework.web.util.UriComponentsBuilder;
+
+public class PageHandler {
+//    private Integer page = 1; // 현재 페이지, 사용자 입력
+//    private Integer pageSize = 10; // 사용자 입력
+//    private String keyword = "";
+//    private String option = "";
+    private SearchCondition sc;
+
     private Integer beginPage; // 3 {(page-1)/navSize} * navSize + 1
     private Integer endPage; // 4 beginPage + (navSize-1) > totalPage 이면 totalPage -> 둘중 가장 작은 값
-    private Integer navSize = 10; // 사용자 입력
-    private Integer pageSize = 10; // 사용자 입력
+    private Integer navSize = 10; // 서버 입력
     private Integer totalCnt; // 1 총 게시물 수
     private Integer totalPage; // 2 totalCnt에서 pageSize를 나누고 올림한값
     private boolean showPrev=false;
     private boolean showNext=false;
 
-    public Paging() {}
+    public PageHandler() {}
 
-    public Paging(Integer page, Integer totalCnt) {
-        this.page = page;
+    public PageHandler(SearchCondition sc, Integer totalCnt) {
+        this.sc = sc;
         this.totalCnt = totalCnt;
 
-        doPaging();
+        doPaging(sc, totalCnt);
     }
 
-    public void doPaging() {
-        this.totalPage = (int) Math.ceil(((float) totalCnt) / this.pageSize);
+    public void doPaging(SearchCondition sc, Integer totalCnt) {
+        this.totalPage = (int) Math.ceil(((float) totalCnt) / sc.getPageSize());
 
-        if(this.page > this.totalPage) this.page = totalPage;
-        if(this.page < 1) this.page = 1;
-
-        this.beginPage = ((this.page-1) / this.navSize) * this.navSize + 1;
+        this.beginPage = ((sc.getPage()-1) / this.navSize) * this.navSize + 1;
         this.endPage = Math.min(totalPage, beginPage + (navSize - 1));
-
         this.showPrev = this.beginPage != 1;
         this.showNext = !this.endPage.equals(this.totalPage);
-    }
-
-    public Integer getPage() {
-        return page;
-    }
-
-    public void setPage(Integer page) {
-        this.page = page;
     }
 
     public Integer getBeginPage() {
@@ -63,14 +57,6 @@ public class Paging {
 
     public void setNavSize(Integer navSize) {
         this.navSize = navSize;
-    }
-
-    public Integer getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(Integer pageSize) {
-        this.pageSize = pageSize;
     }
 
     public Integer getTotalCnt() {
@@ -105,14 +91,21 @@ public class Paging {
         this.showNext = showNext;
     }
 
+    public SearchCondition getSc() {
+        return sc;
+    }
+
+    public void setSc(SearchCondition sc) {
+        this.sc = sc;
+    }
+
     @Override
     public String toString() {
-        return "Paging{" +
-                "page=" + page +
+        return "PageHandler{" +
+                "sc=" + sc +
                 ", beginPage=" + beginPage +
                 ", endPage=" + endPage +
                 ", navSize=" + navSize +
-                ", pageSize=" + pageSize +
                 ", totalCnt=" + totalCnt +
                 ", totalPage=" + totalPage +
                 ", showPrev=" + showPrev +

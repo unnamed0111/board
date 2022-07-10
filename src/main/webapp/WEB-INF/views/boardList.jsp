@@ -43,28 +43,28 @@
             </tbody>
         </table>
         <div class="tool">
-            <form class="search" action="">
+            <form class="search" action="<c:url value='/board/list'/>" method="get">
                 <label class="hidden" for="searchOpt">검색</label>
-                <select name="" id="searchOpt">
+                <select name="option" id="searchOpt">
                     <option value="T">제목</option>
                     <option value="C">내용</option>
-                    <option value="K">제목+내용</option>
+                    <option value="W">제목+내용</option>
                 </select>
-                <input type="text" placeholder="검색">
+                <input name="keyword" type="text" placeholder="검색">
                 <button>검색</button>
             </form>
             <a class="btn-write" href="<c:url value='/board/write'/>">글쓰기</a>
         </div>
-        <div class="paging">
+        <div class="page-handler">
             <ul>
-                <c:if test="${paging.showPrev}">
-                <li><a class="btn-paging" href="<c:url value='/board/list'/>?page=${paging.beginPage - 1}">이전</a></li>
+                <c:if test="${ph.showPrev}">
+                <li><a class="btn-pageHandler" href="<c:url value='/board/list'/>${ph.sc.getQueryString(ph.beginPage - 1)}">이전</a></li>
                 </c:if>
-                <c:forEach var="i" begin="${paging.beginPage}" end="${paging.endPage}">
-                <li <c:if test="${paging.page == i}">class="selected"</c:if>><a href="<c:url value='/board/list'/>?page=${i}">${i}</a></li>
+                <c:forEach var="i" begin="${ph.beginPage}" end="${ph.endPage}">
+                <li <c:if test="${ph.sc.page == i}">class="selected"</c:if>><a href="<c:url value='/board/list'/>${ph.sc.getQueryString(i)}">${i}</a></li>
                 </c:forEach>
-                <c:if test="${paging.showNext}">
-                <li><a class="btn-paging" href="<c:url value='/board/list'/>?page=${paging.endPage + 1}">다음</a></li>
+                <c:if test="${ph.showNext}">
+                <li><a class="btn-pageHandler" href="<c:url value='/board/list'/>${ph.sc.getQueryString(ph.endPage + 1)}">다음</a></li>
                 </c:if>
             </ul>
         </div>

@@ -1,7 +1,7 @@
 package com.board.app.dao;
 
 import com.board.app.domain.Board;
-import com.board.app.domain.Paging;
+import com.board.app.domain.SearchCondition;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,5 +65,27 @@ public class BoardDaoTest {
         Board newBoard = boardDao.selectById(8);
 
         System.out.println("newBoard = " + newBoard);
+    }
+
+    @Test
+    public void selectBySearchTest() throws Exception {
+        SearchCondition sc = new SearchCondition(1, 10, "-", "W");
+        List<Board> list = boardDao.selectBySearch(sc);
+        
+        printBoardTitleList(list);
+    }
+
+    @Test
+    public void selectCountBySearchTest() throws Exception {
+        SearchCondition sc = new SearchCondition(1, 10, "1", "T");
+        int rowCnt = boardDao.selectCountBySearch(sc);
+
+        System.out.println("rowCnt = " + rowCnt);
+    }
+
+    public void printBoardTitleList(List<Board> list) {
+        for(Board board : list) {
+            System.out.println("board.getBoardTitle() = " + board.getBoardTitle());
+        }
     }
 }
