@@ -3,6 +3,35 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.board.app.dao.BoardMapper">
+    <sql id="boardList">
+        SELECT
+            board_id            AS boardId,
+            board_title         AS boardTitle,
+            user_id             AS userId,
+            board_content       AS boardContent,
+            board_reg_date      AS boardRegDate,
+            board_up_date       AS boardUpDate,
+            board_view_cnt      AS boardViewCnt,
+            board_comment_cnt   AS boardCommentCnt,
+            board_like_cnt      AS boardLikeCnt
+        FROM board
+    </sql>
+
+    <sql id="searchCondition">
+        <choose>
+            <when test='option=="T"'>
+                AND board_title LIKE concat('%', #{keyword}, '%')
+            </when>
+            <when test='option=="C"'>
+                AND board_content LIKE concat('%', #{keyword}, '%')
+            </when>
+            <otherwise>
+                AND (board_title LIKE concat('%', #{keyword}, '%')
+                OR board_content LIKE concat('%', #{keyword}, '%'))
+            </otherwise>
+        </choose>
+    </sql>
+
     <delete id="delete" parameterType="Board">
         DELETE FROM board
         WHERE board_id = #{boardId} AND user_id = #{userId};
@@ -36,49 +65,34 @@
     </update>
 
     <select id="selectById" parameterType="int" resultType="Board">
-        SELECT
-            board_id            AS boardId,
-            board_title         AS boardTitle,
-            user_id             AS userId,
-            board_content       AS boardContent,
-            board_reg_date      AS boardRegDate,
-            board_up_date       AS boardUpDate,
-            board_view_cnt      AS boardViewCnt,
-            board_comment_cnt   AS boardCommentCnt,
-            board_like_cnt      AS boardLikeCnt
-        FROM board WHERE board_id = #{id};
+        <include refid="boardList"/>
+        WHERE board_id = #{id};
     </select>
 
     <select id="selectByPageDefault" resultType="Board">
-        SELECT
-            board_id            AS boardId,
-            board_title         AS boardTitle,
-            user_id             AS userId,
-            board_content       AS boardContent,
-            board_reg_date      AS boardRegDate,
-            board_up_date       AS boardUpDate,
-            board_view_cnt      AS boardViewCnt,
-            board_comment_cnt   AS boardCommentCnt,
-            board_like_cnt      AS boardLikeCnt
-        FROM board
+        <include refid="boardList"/>
         ORDER BY boardRegDate DESC, boardId DESC
         LIMIT 0, 10;
     </select>
 
     <select id="selectByPage" parameterType="map" resultType="Board">
-        SELECT
-            board_id            AS boardId,
-            board_title         AS boardTitle,
-            user_id             AS userId,
-            board_content       AS boardContent,
-            board_reg_date      AS boardRegDate,
-            board_up_date       AS boardUpDate,
-            board_view_cnt      AS boardViewCnt,
-            board_comment_cnt   AS boardCommentCnt,
-            board_like_cnt      AS boardLikeCnt
-        FROM board
+        <include refid="boardList"/>
         ORDER BY boardRegDate DESC, boardId DESC
         LIMIT #{begin}, #{size};
+    </select>
+
+    <select id="selectBySearch" parameterType="SearchCondition" resultType="Board">
+        <include refid="boardList"/>
+        WHERE true
+        <include refid="searchCondition"/>
+        ORDER BY boardRegDate DESC, boardId DESC
+        LIMIT #{offset}, #{pageSize};
+    </select>
+
+    <select id="selectCntBySearch" parameterType="SearchCondition" resultType="int">
+        SELECT COUNT(*) FROM board
+        WHERE true
+        <include refid="searchCondition"/>
     </select>
 
     <select id="selectCnt" resultType="int">

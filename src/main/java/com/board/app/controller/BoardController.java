@@ -1,13 +1,15 @@
 package com.board.app.controller;
 
-import com.board.app.dao.BoardDao;
 import com.board.app.dao.UserDao;
 import com.board.app.domain.Board;
-import com.board.app.domain.Paging;
+import com.board.app.domain.PageHandler;
+import com.board.app.domain.SearchCondition;
 import com.board.app.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,23 +23,25 @@ import java.util.List;
 public class BoardController {
     private UserDao userDao;
     private BoardService boardService;
-//    private BoardDao boardDao;
 
     @Autowired
     public BoardController(UserDao userDao, BoardService boardService) {
         this.userDao = userDao;
         this.boardService = boardService;
-//        this.boardDao = boardDao;
     }
 
     // app/board/list?page=1&keyword=&
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String getList(Paging paging, Model m) throws Exception {
+    public String getList(SearchCondition sc, Model m) throws Exception {
 
-        List<Board> boardList = boardService.getList(paging);
+        // 페이지 버튼 UI 담당
+        Integer totalCnt = boardService.getSize(sc);
+        PageHandler ph = new PageHandler(sc, totalCnt);
+
+        List<Board> boardList = boardService.getList(sc);
 
         m.addAttribute("boardList", boardList);
-        m.addAttribute("paging", paging);
+        m.addAttribute("ph", ph);
 
         return "boardList";
     }

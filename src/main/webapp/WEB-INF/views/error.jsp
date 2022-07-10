@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: ldw
@@ -11,6 +12,10 @@
     <title>에러페이지</title>
 </head>
 <body>
-    에러메세지 : ${error}
+    <div>현재 페이지는 시험용으로 사용되고있습니다.</div>
+    <a href="<c:url value='/'/>">돌아가기</a>
+    <div>
+        에러메세지 : ${error}
+    </div>
 </body>
 </html>

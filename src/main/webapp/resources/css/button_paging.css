@@ -1,17 +1,17 @@
-.paging {
+.page-handler {
     text-align: center;
     height: 40px;
 }
 
-.paging ul {
+.page-handler ul {
     display: inline-block;
 }
 
-.paging li {
+.page-handler li {
     float: left;
 }
 
-.paging li a {
+.page-handler li a {
     display: block;
     line-height: 38px;
     text-align: center;
@@ -19,7 +19,7 @@
     border-radius: 10px;
 }
 
-.paging li:not(:last-child) a {
+.page-handler li:not(:last-child) a {
     margin-right: 10px;
 }
 
@@ -32,15 +32,15 @@
 /*    width: 38px;*/
 /*}*/
 
-.paging li a {
+.page-handler li a {
     width: 58px;
 }
 
-.paging li a:not(.btn-paging) {
+.page-handler li a:not(.btn-paging) {
     width: 38px;
 }
 
-.paging li.selected a {
+.page-handler li.selected a {
     border-color: #59f800;
     background-color: #59f800;
 }
