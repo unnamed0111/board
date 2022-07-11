@@ -34,6 +34,12 @@
       </table>
     </div>
     <textarea id="contentBox" class="content" disabled>${board.boardContent}</textarea>
+    <div class="like-box">
+      <a id="likeBtn" href="" title="추천하기">
+        <div>추천</div>
+        <div id="likeCnt">500</div>
+      </a>
+    </div>
     <c:if test="${board.userId == globalUserInfo.userId}">
       <div class="tool">
         <a href="<c:url value='/board/modify'/>?id=${board.boardId}">수정하기</a>
@@ -72,6 +78,7 @@
       let totalHeight = $('#contentBox').prop('scrollHeight');
       $('#contentBox').height(totalHeight);
       showCommentList();
+      showLike();
     });
 
     // BOARD
@@ -238,6 +245,71 @@
       }); // $.ajax()
     });
 
+    // LIKE
+    $('#likeBtn').on('click', function(event) {
+      event.preventDefault();
+
+      // 이미 추천을 누른 상황이면 like DELETE
+      // 추천을 누르지 않은 상황이면 like POST
+      if($(this).attr('data-checked') === 'true') {
+        // DELETE
+        unlike();
+      } else {
+        // POST
+        like();
+      }
+    });
+
+    //    LIKE POST
+    let like = function(target) {
+      $.ajax({
+        type: 'POST',       // 요청 메서드
+        url: '<c:url value="/like"/>?id=${board.boardId}',  // 요청 URI
+        success: function (result) {
+          alert(result);
+          showLike();
+        },
+        error: function (err) {
+          alert(err.responseText);
+        } // 에러가 발생했을 때, 호출될 함수
+      }); // $.ajax()
+    }
+
+    //    LIKE DELETE
+    let unlike = function(target) {
+      $.ajax({
+        type: 'DELETE',       // 요청 메서드
+        url: '<c:url value="/like"/>?id=${board.boardId}',  // 요청 URI
+        success: function (result) {
+          alert(result);
+          showLike();
+        },
+        error: function (err) {
+          alert(err.responseText);
+        } // 에러가 발생했을 때, 호출될 함수
+      }); // $.ajax()
+    }
+
+    //    LIKE SHOW
+    let showLike = function() {
+      $.ajax({
+        type: 'GET',       // 요청 메서드
+        url: '<c:url value="/like"/>?id=${board.boardId}',  // 요청 URI
+        success: function (result) {
+          console.log(result);
+          $('#likeCnt').html(result.like);
+          if(result.checked === 1) {
+            $('#likeBtn').attr('data-checked', true).addClass('liked');
+          } else {
+            $('#likeBtn').attr('data-checked', false).removeClass('liked');
+          }
+        },
+        error: function (err) {
+          alert(err.responseText);
+        } // 에러가 발생했을 때, 호출될 함수
+      }); // $.ajax()
+    }
+
     // UI controller
     //  reply transform
     $('#commentTable').on('click', '#commentList tr a', function(event) {
@@ -327,6 +399,8 @@
               ("0" + date.getMinutes()).slice(-2) + ":" +
               ("0" + date.getSeconds()).slice(-2);
     }
+
+
   </script>
 </main>
 </body>

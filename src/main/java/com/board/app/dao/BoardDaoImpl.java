@@ -1,7 +1,6 @@
 package com.board.app.dao;
 
 import com.board.app.domain.Board;
-import com.board.app.domain.PageHandler;
 import com.board.app.domain.SearchCondition;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +39,14 @@ public class BoardDaoImpl implements BoardDao {
         map.put("boardId", boardId);
         map.put("cnt", i);
         return session.update(namespace + "updateCommentCnt", map);
+    }
+
+    @Override
+    public Integer updateLikeCnt(Integer boardId, Integer i) throws Exception {
+        Map map = new HashMap();
+        map.put("boardId", boardId);
+        map.put("cnt", i);
+        return session.update(namespace + "updateLikeCnt", map);
     }
 
     @Override

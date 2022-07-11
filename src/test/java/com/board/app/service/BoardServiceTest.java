@@ -30,8 +30,8 @@ public class BoardServiceTest {
     @Test
     public void removeTest() throws Exception {
         Board board = new Board();
-        board.setUserId("asdf");
-        board.setBoardId(12);
+        board.setUserId("kimpope");
+        board.setBoardId(145);
 
         boardService.remove(board);
     }

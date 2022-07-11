@@ -55,6 +55,12 @@
         WHERE board_id = #{boardId};
     </update>
 
+    <update id="updateLikeCnt" parameterType="map">
+        UPDATE board
+        SET board_like_cnt = board_like_cnt + #{cnt}
+        WHERE board_id = #{boardId};
+    </update>
+
     <update id="update" parameterType="Board">
         UPDATE board
         SET

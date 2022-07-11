@@ -134,6 +134,7 @@ public class BoardController {
         return "redirect:/board/list";
     }
 
+
     private String loginCheck(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
 

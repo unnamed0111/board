@@ -93,6 +93,33 @@ h3 { margin-top: 100px; }
     font-size: 1.25em;
 }
 
+.like-box > a {
+    margin: 0 auto;
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.like-box > a > div:first-child {
+    line-height: 50px;
+}
+
+.like-box > a > div:last-child {
+    height: 50px;
+    font-size: 1.25em;
+}
+
+.like-box > a:not(.liked):hover {
+    background-color: #59f800;
+}
+
+.liked {
+    background-color: #59f800;
+}
+
 .tool::after {
     content: "";
     display: block;

@@ -12,7 +12,7 @@
 </head>
 <body>
 <main class="center">
-    <h1><a href="">게시판</a></h1>
+    <h1><a href="<c:url value='/'/>">게시판</a></h1>
     <form class="form-login" action="<c:url value='/login'/>" method="post">
         <fieldset>
             <legend class="hidden">로그인</legend>
@@ -29,6 +29,7 @@
             <ul class="list">
                 <li><input name="idRemember" id="check" type="checkbox"><label for="check">아이디 저장</label></li>
                 <li><a href="<c:url value='/register'/>">회원가입</a></li>
+
             </ul>
             <div class="btn-login"><button type="submit">로그인</button></div>
         </fieldset>

@@ -2,8 +2,8 @@ package com.board.app.service;
 
 import com.board.app.dao.BoardDao;
 import com.board.app.dao.CommentDao;
+import com.board.app.dao.LikeDao;
 import com.board.app.domain.Board;
-import com.board.app.domain.PageHandler;
 import com.board.app.domain.SearchCondition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,11 +14,13 @@ import java.util.List;
 public class BoardService {
     private BoardDao boardDao;
     private CommentDao commentDao;
+    private LikeDao likeDao;
 
     @Autowired
-    public BoardService(BoardDao boardDao, CommentDao commentDao) {
+    public BoardService(BoardDao boardDao, CommentDao commentDao, LikeDao likeDao) {
         this.boardDao = boardDao;
         this.commentDao = commentDao;
+        this.likeDao = likeDao;
     }
 
     public Board read(Integer boardId) throws Exception {
@@ -54,6 +56,7 @@ public class BoardService {
 
     public Integer remove(Board board) throws Exception {
         commentDao.deleteByBoardId(board);
+        likeDao.deleteByBoardId(board.getBoardId());
         return boardDao.delete(board);
     }
 }

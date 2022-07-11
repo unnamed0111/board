@@ -13,6 +13,8 @@ public interface BoardDao {
 
     Integer updateCommentCnt(Integer boardId, Integer i) throws Exception;
 
+    Integer updateLikeCnt(Integer boardId, Integer i) throws Exception;
+
     Board selectById(Integer boardId) throws Exception;
 
     List<Board> selectByPage() throws Exception;
