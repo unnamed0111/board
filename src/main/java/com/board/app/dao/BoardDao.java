@@ -28,4 +28,8 @@ public interface BoardDao {
     List<Board> selectBySearch(SearchCondition sc) throws Exception;
 
     Integer selectCountBySearch(SearchCondition sc) throws Exception;
+
+    List<Board> selectDailyTop() throws Exception;
+
+    List<Board> selectMonthlyTop() throws Exception;
 }

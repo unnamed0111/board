@@ -8,8 +8,6 @@ import com.board.app.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,7 +44,7 @@ public class BoardController {
         return "boardList";
     }
 
-    @RequestMapping(value = "/read", method = RequestMethod.GET)
+    @RequestMapping(value = "/read", method = RequestMethod.GET) // /board/read?id=1231
     public String read(@RequestParam(value = "id") Integer boardId, Model m) throws Exception {
         System.out.println("id = " + boardId);
 

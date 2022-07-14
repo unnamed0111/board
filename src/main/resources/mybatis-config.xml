@@ -9,5 +9,6 @@
         <typeAlias alias="Comment" type="com.board.app.domain.Comment"/>
         <typeAlias alias="Paging" type="com.board.app.domain.PageHandler"/>
         <typeAlias alias="SearchCondition" type="com.board.app.domain.SearchCondition"/>
+        <typeAlias alias="Date" type="java.util.Date"/>
     </typeAliases>
 </configuration>

@@ -83,4 +83,14 @@ public class BoardDaoImpl implements BoardDao {
     public Integer selectCountBySearch(SearchCondition sc) throws Exception {
         return session.selectOne(namespace + "selectCntBySearch", sc);
     }
+
+    @Override
+    public List<Board> selectDailyTop() throws Exception {
+        return session.selectList(namespace + "selectDailyTop");
+    }
+
+    @Override
+    public List<Board> selectMonthlyTop() throws Exception {
+        return session.selectList(namespace + "selectMonthlyTop");
+    }
 }

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -34,5 +36,18 @@ public class BoardServiceTest {
         board.setBoardId(145);
 
         boardService.remove(board);
+    }
+
+    @Test
+    public void getMonthlyTop() throws Exception {
+        List<Board> list = boardService.getMonthlyTop();
+
+        printSimpleBoard(list);
+    }
+
+    private void printSimpleBoard(List<Board> list) {
+        for(Board board : list) {
+            System.out.println("board = " + board);
+        }
     }
 }

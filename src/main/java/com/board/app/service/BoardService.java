@@ -42,6 +42,14 @@ public class BoardService {
         return boardDao.selectByPage();
     }
 
+    public List<Board> getDailyTop() throws Exception {
+        return boardDao.selectDailyTop();
+    }
+
+    public List<Board> getMonthlyTop() throws Exception {
+        return boardDao.selectMonthlyTop();
+    }
+
     public Integer getSize(SearchCondition sc) throws Exception {
         return boardDao.selectCountBySearch(sc);
     }

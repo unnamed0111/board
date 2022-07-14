@@ -104,4 +104,18 @@
     <select id="selectCnt" resultType="int">
         SELECT COUNT(*) FROM board;
     </select>
+
+    <select id="selectDailyTop" resultType="Board">
+        <include refid="boardList"/>
+        WHERE DATE_FORMAT(board_reg_date,'%Y-%m-%d') = CURDATE()
+        ORDER BY board_like_cnt DESC, board_id DESC
+        LIMIT 0, 10;
+    </select>
+
+    <select id="selectMonthlyTop" resultType="Board">
+        <include refid="boardList"/>
+        where YEAR(board_reg_date) = YEAR(CURDATE()) AND MONTH(board_reg_date) = MONTH(CURDATE())
+        ORDER BY board_like_cnt DESC, board_id DESC
+        LIMIT 0, 10;
+    </select>
 </mapper>

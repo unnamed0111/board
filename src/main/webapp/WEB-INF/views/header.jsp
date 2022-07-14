@@ -9,6 +9,14 @@
             <c:if test="${globalUserInfo == null}">
                 <li><a href="<c:url value='/register'/>">회원가입</a></li>
             </c:if>
+            <c:choose>
+                <c:when test="${globalUserInfo == null}">
+                    <li><a href="<c:url value='/register'/>">회원가입</a></li>
+                </c:when>
+                <c:otherwise>
+                    <li><a href="">${globalUserInfo.userId} 님</a></li>
+                </c:otherwise>
+            </c:choose>
         </ul>
     </nav>
 </header>

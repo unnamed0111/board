@@ -30,25 +30,25 @@
 	<section class="list">
 		<h3>최근 게시물</h3>
 		<ul>
-			<li><a href="">최근 글 dsad sa dsd sad sa dds adsssssssssssssssssssss</a></li>
-			<li><a href="">최근 글</a></li>
-			<li><a href="">최근 글</a></li>
+			<c:forEach var="board" items="${recentList}">
+				<li><a href="<c:url value="/board/read"/>?id=${board.boardId}">${board.boardTitle}</a></li>
+			</c:forEach>
 		</ul>
 	</section>
 	<section class="list">
 		<h3>오늘의 인기 게시물</h3>
 		<ul>
-			<li><a href="">최근 인기글</a></li>
-			<li><a href="">최근 인기글</a></li>
-			<li><a href="">최근 인기글</a></li>
+			<c:forEach var="board" items="${dailyTopList}">
+				<li><a href="<c:url value="/board/read"/>?id=${board.boardId}">${board.boardTitle}</a></li>
+			</c:forEach>
 		</ul>
 	</section>
 	<section class="list">
 		<h3>월간 인기 게시물</h3>
 		<ul>
-			<li><a href="">월간 인기글</a></li>
-			<li><a href="">월간 인기글</a></li>
-			<li><a href="">월간 인기글</a></li>
+			<c:forEach var="board" items="${monthlyTopList}">
+				<li><a href="<c:url value="/board/read"/>?id=${board.boardId}">${board.boardTitle}</a></li>
+			</c:forEach>
 		</ul>
 	</section>
 </main>
