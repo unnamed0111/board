@@ -12,6 +12,15 @@
 - 브라우저용 위지윅 추가 
 - 유저 프로필 수정/탈퇴 기능 추가
 - 관리자 기능 추가
+## 사용기술
+- Java 11
+- Spring Framework
+- MyBatis
+- MySQL
+- Tomcat 9.0
+- AWS
+- HTML/CSS/JavaScript
+- jQuery
 ## 구성
 - HOME
   - 최근 게시물 
