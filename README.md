@@ -35,14 +35,38 @@
 - COMMENT
   - 댓글/답글 CRUD
   - REST 처리
+- LIKE
+  - 추천 기능
+  - REST 처리
 ## 핵심 기능들
+
+이 서비스의 핵심기능은 게시물 작성입니다.
+사용자가 게시물을 작성하고 등록을 하면
+게시물이 목록에 갱신됩니다.
+
 <details>
 <summary><b>핵심 기능 설명 펼치기</b></summary>
 <div markdown="1">
   
 ### 전체 흐름
+![flow](https://user-images.githubusercontent.com/4982309/179008967-cb1f4427-f2e7-4525-8062-b57aeda49795.png)
 
-  
+### Controller
+![슬라이드2](https://user-images.githubusercontent.com/4982309/179017587-e23bee4a-e01b-4dee-994b-3988fafde5b8.PNG)
+- 로그인 여부 체크
+  + 세션을 받아서 ID확인
+  + 없으면 홈으로 redirect
+- 유저 정보를 Board객체에 주입
+- Board 객체를 Service계층으로 전달
+
+### Service
+![슬라이드3](https://user-images.githubusercontent.com/4982309/179018327-133d69bf-fe14-48e0-aec2-f85432f4dc49.PNG)
+- Board객체를 그대로 DAO로 전달
+
+### DAO
+![슬라이드4](https://user-images.githubusercontent.com/4982309/179018454-51d15b5d-32ac-4ed5-89df-0d867dfabbd9.PNG)
+- 전달 받은 Board객체를 myBatis로 해당 Mapper로 전달
+- myBatis로 Mapper에 등록된 SQL문 실행
 </div>
 </details>
 
