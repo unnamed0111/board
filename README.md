@@ -6,19 +6,15 @@
 > 현재 작동하는 프로젝트가 궁금하신가요?<br>
 >
 > -BOARD SERVICE 바로가기-http://54.180.152.86:8080/board/
-
-## 추가할 기능들
-- 사진 첨부 및 표시
-- 브라우저용 위지윅 추가 
-- 유저 프로필 수정/탈퇴 기능 추가
-- 관리자 기능 추가
 ## 사용기술
+#### `Back-end`
 - Java 11
 - Spring Framework
 - MyBatis
 - MySQL
 - Tomcat 9.0
 - AWS
+#### `Front-end`
 - HTML/CSS/JavaScript
 - jQuery
 ## 구성
@@ -39,9 +35,25 @@
 - COMMENT
   - 댓글/답글 CRUD
   - REST 처리
+## 핵심 기능들
+<details>
+<summary><b>핵심 기능 설명 펼치기</b></summary>
+<div markdown="1">
+  
+### 전체 흐름
+
+  
+</div>
+</details>
+
 ## 현재 구현 완료된 기능들
 - 회원가입시 유효 검사
 - Request Parameter 및 Json XSS방지 구현
 - 페이징 기능 구현
 - 게시물 CRUD구현
 - 댓글/답글 구현
+### 추가할 기능들
+- 사진 첨부 및 표시
+- 브라우저용 위지윅 추가 
+- 유저 프로필 수정/탈퇴 기능 추가
+- 관리자 기능 추가
