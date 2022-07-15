@@ -44,10 +44,6 @@
 사용자가 게시물을 작성하고 등록을 하면
 게시물이 목록에 갱신됩니다.
 
-<details>
-<summary><b>핵심 기능 설명 펼치기</b></summary>
-<div markdown="1">
-  
 ### 전체 흐름
 ![flow](https://user-images.githubusercontent.com/4982309/179008967-cb1f4427-f2e7-4525-8062-b57aeda49795.png)
 
@@ -67,8 +63,6 @@
 ![슬라이드4](https://user-images.githubusercontent.com/4982309/179018454-51d15b5d-32ac-4ed5-89df-0d867dfabbd9.PNG)
 - 전달 받은 Board객체를 myBatis로 해당 Mapper로 전달
 - myBatis로 Mapper에 등록된 SQL문 실행
-</div>
-</details>
 
 ## 현재 구현 완료된 기능들
 - 회원가입시 유효 검사
