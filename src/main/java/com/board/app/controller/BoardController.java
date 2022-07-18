@@ -46,7 +46,6 @@ public class BoardController {
 
     @RequestMapping(value = "/read", method = RequestMethod.GET) // /board/read?id=1231
     public String read(@RequestParam(value = "id") Integer boardId, Model m) throws Exception {
-        System.out.println("id = " + boardId);
 
         if(boardId == null) return "redirect:/board/list";
 
@@ -80,7 +79,6 @@ public class BoardController {
 
         // 게시물 등록
         int rowCnt = boardService.write(board);
-        System.out.println("rowCnt = " + rowCnt);
 
         // 목록 첫페이지로 이동
         return "redirect:/board/list";
@@ -115,12 +113,11 @@ public class BoardController {
         // 수정된 내용들을 DB에 업데이트 시킨다.
         int rowCnt = boardService.modify(board);
 
-        System.out.println("rowCnt = " + rowCnt);
 
         return "redirect:/board/read?id="+board.getBoardId();
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "/remove", method = RequestMethod.GET)
     public String delete(Board board, HttpServletRequest request) throws Exception {
         String userId = loginCheck(request);
         if(userId == null) return "redirect:/login";

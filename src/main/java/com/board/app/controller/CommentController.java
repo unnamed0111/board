@@ -24,7 +24,7 @@ public class CommentController {
         this.commentService = commentService;
     }
 
-    @GetMapping("/list")
+    @GetMapping("/list") // /commnet/list?id=
     public ResponseEntity<List<Comment>> list(@RequestParam("id") Integer boardId) throws Exception {
 
         List<Comment> list = commentService.list(boardId);
@@ -38,7 +38,6 @@ public class CommentController {
         if(userId == null) return new ResponseEntity<String>("REQUIRED_LOGIN", HttpStatus.BAD_REQUEST);
 
         comment.setUserId(userId);
-        System.out.println("comment = " + comment);
 
         commentService.write(comment);
 

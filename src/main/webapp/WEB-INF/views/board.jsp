@@ -17,7 +17,7 @@
   <h3><a href="<c:url value='/board/list'/>">게시판 목록</a></h3>
   <article class="board">
     <div class="title">
-      <h4><c:out value=" ${board.boardTitle}"/></h4>
+      <h4>${board.boardTitle}</h4>
       <table>
         <tr>
           <th>작성자</th>
@@ -43,7 +43,7 @@
     <c:if test="${board.userId == globalUserInfo.userId}">
       <div class="tool">
         <a href="<c:url value='/board/modify'/>?id=${board.boardId}">수정하기</a>
-        <a id="deleteBtn" href="<c:url value='/board/delete'/>?boardId=${board.boardId}">삭제하기</a>
+        <a id="deleteBtn" href="<c:url value='/board/remove'/>?boardId=${board.boardId}">삭제하기</a>
       </div>
     </c:if>
     <div id="commentTable" class="list">

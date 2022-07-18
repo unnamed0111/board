@@ -46,7 +46,7 @@ public class SearchCondition {
     }
 
     public void setPageSize(Integer pageSize) {
-        this.pageSize = pageSize;
+        this.pageSize = Math.min(pageSize, 30);
     }
 
     public String getKeyword() {

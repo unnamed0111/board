@@ -5,6 +5,7 @@ import com.board.app.dao.CommentDao;
 import com.board.app.domain.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class CommentService {
         return commentDao.selectByBoardId(boardId);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public Integer write(Comment comment) throws Exception {
         int rowCnt = commentDao.insert(comment);
         boardDao.updateCommentCnt(comment.getBoardId(), 1);
@@ -34,6 +36,7 @@ public class CommentService {
         return commentDao.update(comment);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public Integer remove(Comment comment) throws Exception {
         int rowCnt = commentDao.delete(comment);
         boardDao.updateCommentCnt(comment.getBoardId(), -1);

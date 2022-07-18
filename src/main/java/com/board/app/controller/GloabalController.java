@@ -29,7 +29,6 @@ public class GloabalController {
 
     @ModelAttribute("globalUserInfo")
     public User LoginInfo(HttpServletRequest request) throws Exception {
-        System.out.println("전역 모델 처리기 진입");
         HttpSession session = request.getSession(false);
 
         if(session == null) {

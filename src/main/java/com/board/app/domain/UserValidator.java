@@ -17,6 +17,7 @@ public class UserValidator implements Validator {
     public void validate(Object target, Errors errors) {
         User user = (User) target;
 
+        // 전체 필드는 모두 비어있으면 안된다.
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userId", "required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userPwd", "required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userName", "required");

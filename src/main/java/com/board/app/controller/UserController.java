@@ -3,6 +3,7 @@ package com.board.app.controller;
 import com.board.app.dao.UserDao;
 import com.board.app.domain.User;
 import com.board.app.domain.UserValidator;
+import com.board.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -18,11 +19,27 @@ import java.util.Date;
 
 @Controller
 public class UserController {
-    private UserDao userDao;
+    private UserService userService;
 
     @Autowired
-    public UserController(UserDao userDao) {
-        this.userDao = userDao;
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String register(@Valid User user, BindingResult result) throws Exception {
+
+        // 아이디 중복 확인
+        User userExisted = userService.getById(user.getUserId());
+
+        if(userExisted != null) {
+            result.rejectValue("userId", "exist");
+        }
+
+        if(result.hasErrors()) return "register";
+
+        userService.register(user);
+        return "redirect:/";
     }
 
     @InitBinder
@@ -35,22 +52,5 @@ public class UserController {
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String getPage() {
         return "register";
-    }
-
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(@Valid User user, BindingResult result) throws Exception {
-        System.out.println("user = " + user);
-
-        // 아이디 중복 확인
-        User userExisted = userDao.selectUser(user.getUserId());
-
-        if(userExisted != null) {
-            result.rejectValue("userId", "exist");
-        }
-
-        if(result.hasErrors()) return "register";
-
-        userDao.insertUser(user);
-        return "redirect:/";
     }
 }

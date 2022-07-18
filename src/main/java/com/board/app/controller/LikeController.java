@@ -65,7 +65,6 @@ public class LikeController {
         // 해당 보드아이디를 통해서 보드를 가져와서 보드내에 추천수 사용하기
         Map map = new HashMap();
 
-        System.out.println("boardId = " + boardId);
 
         // 없는 보드를 참조할경우 에러 -> ERR_SHOW
         try {

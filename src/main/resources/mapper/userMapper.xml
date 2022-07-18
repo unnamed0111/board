@@ -6,13 +6,7 @@
     <insert id="insertUser" parameterType="User">
         INSERT INTO user
         (user_id, user_pwd, user_name, user_email, user_birth)
-        VALUES (
-            #{userId},
-            #{userPwd},
-            #{userName},
-            #{userEmail},
-            #{userBirth}
-        );
+        VALUES (#{userId}, #{userPwd}, #{userName}, #{userEmail}, #{userBirth});
     </insert>
 
     <select id="selectUserLogin" parameterType="User" resultType="int">

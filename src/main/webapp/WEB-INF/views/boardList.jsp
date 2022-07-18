@@ -32,7 +32,7 @@
             <c:forEach var="board" items="${boardList}">
                 <tr>
                     <td>${board.boardId}</td>
-                    <td><a href="<c:url value='/board/read'/>?id=${board.boardId}"><c:out value="${board.boardTitle}"/></a></td>
+                    <td><a href="<c:url value='/board/read'/>?id=${board.boardId}">${board.boardTitle}</a></td>
                     <td>${board.boardCommentCnt}</td>
                     <td><c:out value="${board.userId}"/></td>
                     <td><time datetime="2022-11-11"><fmt:formatDate value="${board.boardRegDate}" pattern="yyyy-MM-dd"/></time></td>

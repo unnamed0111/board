@@ -7,6 +7,7 @@ import com.board.app.domain.Board;
 import com.board.app.domain.SearchCondition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -62,6 +63,7 @@ public class BoardService {
         return boardDao.update(board);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public Integer remove(Board board) throws Exception {
         commentDao.deleteByBoardId(board);
         likeDao.deleteByBoardId(board.getBoardId());

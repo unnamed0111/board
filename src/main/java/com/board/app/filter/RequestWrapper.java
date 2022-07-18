@@ -42,9 +42,7 @@ public final class RequestWrapper extends HttpServletRequestWrapper {
     }
 
     private String cleanXSS(String value) {
-        System.out.println("XSS Filter before : " + value);
         value = XSSConverter.cleanXSS(value);
-        System.out.println("XSS Filter after : " + value);
         return value;
     }
 }

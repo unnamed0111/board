@@ -2,6 +2,7 @@ package com.board.app.controller;
 
 import com.board.app.dao.UserDao;
 import com.board.app.domain.User;
+import com.board.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,11 +13,11 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class LoginController {
-    private UserDao userDao;
+    private UserService userService;
 
     @Autowired
-    public LoginController(UserDao userDao) {
-        this.userDao = userDao;
+    public LoginController(UserService userService) {
+        this.userService = userService;
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -26,9 +27,8 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(User user, HttpServletRequest request) throws Exception {
-        System.out.println("user = " + user);
 
-        if(!loginCheck(user)) {
+        if(!userService.login(user)) {
             return "redirect:/login";
         }
         
@@ -43,9 +43,5 @@ public class LoginController {
         session.invalidate();
 
         return "redirect:/";
-    }
-
-    private boolean loginCheck(User user) throws Exception {
-        return userDao.selectUserLogin(user) == 1;
     }
 }

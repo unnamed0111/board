@@ -6,9 +6,6 @@
         <ul>
             <li><a href="<c:url value='/board/list'/>">게시판</a></li>
             <li><a href="<c:url value='/${globalUserInfo == null ? "login" : "logout"}'/>">${globalUserInfo == null ? "로그인" : "로그아웃"}</a></li>
-            <c:if test="${globalUserInfo == null}">
-                <li><a href="<c:url value='/register'/>">회원가입</a></li>
-            </c:if>
             <c:choose>
                 <c:when test="${globalUserInfo == null}">
                     <li><a href="<c:url value='/register'/>">회원가입</a></li>
