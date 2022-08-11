@@ -36,10 +36,13 @@ public class CommentService {
         return commentDao.update(comment);
     }
 
+    // 대댓글도 지워야함
     @Transactional(rollbackFor = Exception.class)
     public Integer remove(Comment comment) throws Exception {
-        int rowCnt = commentDao.delete(comment);
-        boardDao.updateCommentCnt(comment.getBoardId(), -1);
+        int rowCnt = commentDao.deleteByParentId(comment);
+        rowCnt += commentDao.delete(comment);
+        if(rowCnt == 0) throw new Exception();
+        boardDao.updateCommentCnt(comment.getBoardId(), -rowCnt);
 
         return rowCnt;
     }

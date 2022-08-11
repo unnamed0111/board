@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/comment")
 public class CommentController {
     private CommentService commentService;
 
@@ -24,7 +23,7 @@ public class CommentController {
         this.commentService = commentService;
     }
 
-    @GetMapping("/list") // /commnet/list?id=
+    @GetMapping("/comment") // /comment/list?id=
     public ResponseEntity<List<Comment>> list(@RequestParam("id") Integer boardId) throws Exception {
 
         List<Comment> list = commentService.list(boardId);
@@ -32,7 +31,7 @@ public class CommentController {
         return new ResponseEntity<List<Comment>>(list, HttpStatus.OK);
     }
 
-    @PostMapping("/write")
+    @PostMapping("/comment")
     public ResponseEntity<String> write(@RequestBody Comment comment, HttpServletRequest request) throws Exception {
         String userId = loginCheck(request);
         if(userId == null) return new ResponseEntity<String>("REQUIRED_LOGIN", HttpStatus.BAD_REQUEST);
@@ -44,7 +43,7 @@ public class CommentController {
         return new ResponseEntity<String>("WRT_OK", HttpStatus.CREATED);
     }
 
-    @PatchMapping("/modify")
+    @PatchMapping("/comment")
     public ResponseEntity<String> modify(@RequestBody Comment comment, HttpServletRequest request) throws Exception {
         String userId = loginCheck(request);
         if(userId == null) return new ResponseEntity<String>("REQUIRED_LOGIN", HttpStatus.BAD_REQUEST);
@@ -56,7 +55,7 @@ public class CommentController {
         return new ResponseEntity<String>("MOD_OK", HttpStatus.OK);
     }
 
-    @DeleteMapping("/remove")
+    @DeleteMapping("/comment")
     public ResponseEntity<String> remove(@RequestBody Comment comment, HttpServletRequest request) throws Exception {
         String userId = loginCheck(request);
         if(userId == null) return new ResponseEntity<String>("REQUIRED_LOGIN", HttpStatus.BAD_REQUEST);

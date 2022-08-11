@@ -40,6 +40,11 @@ public class CommentDaoImpl implements CommentDao {
     }
 
     @Override
+    public Integer deleteByParentId(Comment comment) throws Exception {
+        return session.delete(namespace + "deleteByParentId", comment);
+    }
+
+    @Override
     public Integer deleteByBoardId(Board board) throws Exception {
         return session.delete(namespace + "deleteByBoardId", board);
     }

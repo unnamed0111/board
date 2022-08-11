@@ -14,5 +14,7 @@ public interface CommentDao {
 
     Integer delete(Comment comment) throws Exception;
 
+    Integer deleteByParentId(Comment comment) throws Exception;
+
     Integer deleteByBoardId(Board board) throws Exception;
 }

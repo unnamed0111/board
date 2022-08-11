@@ -94,7 +94,7 @@
 
       $.ajax({
         type: 'GET',       // 요청 메서드
-        url: '<c:url value="/comment/list"/>?id=${board.boardId}',  // 요청 URI
+        url: '<c:url value="/comment"/>?id=${board.boardId}',  // 요청 URI
         headers: { "content-type": "application/json" }, // 요청 헤더
         dataType: 'text', // 전송받을 데이터의 타입
         success: function (result) {
@@ -168,7 +168,7 @@
 
       $.ajax({
         type: 'POST',       // 요청 메서드
-        url: '<c:url value="/comment/write"/>',  // 요청 URI
+        url: '<c:url value="/comment"/>',  // 요청 URI
         headers: {"content-type": "application/json"}, // 요청 헤더
         dataType: 'text', // 전송받을 데이터의 타입
         data: JSON.stringify(data),  // 서버로 전송할 데이터. stringify()로 직렬화 필요.
@@ -198,7 +198,7 @@
 
       $.ajax({
         type: 'PATCH',       // 요청 메서드
-        url: '<c:url value="/comment/modify"/>',  // 요청 URI
+        url: '<c:url value="/comment"/>',  // 요청 URI
         headers: {"content-type": "application/json"}, // 요청 헤더
         dataType: 'text', // 전송받을 데이터의 타입
         data: JSON.stringify(data),  // 서버로 전송할 데이터. stringify()로 직렬화 필요.
@@ -223,13 +223,14 @@
       // 해당 commentId 알아내기
       let id = Number($(this).parent().parent().attr('data-id'));
       let data = {
-        commentId: id
+        commentId: id,
+        boardId: ${board.boardId}
       }
 
       // 해당 댓글 삭제하기
       $.ajax({
         type: 'DELETE',       // 요청 메서드
-        url: '<c:url value="/comment/remove"/>',  // 요청 URI
+        url: '<c:url value="/comment"/>',  // 요청 URI
         headers: {"content-type": "application/json"}, // 요청 헤더
         dataType: 'text', // 전송받을 데이터의 타입
         data: JSON.stringify(data),  // 서버로 전송할 데이터. stringify()로 직렬화 필요.

@@ -31,7 +31,12 @@
 
     <delete id="delete" parameterType="Comment">
         DELETE FROM comment
-        WHERE comment_id = #{commentId} AND user_id = #{userId};
+        WHERE comment_id = #{commentId} AND user_id = #{userId} AND board_id = #{boardId};
+    </delete>
+
+    <delete id="deleteByParentId" parameterType="Comment">
+        DELETE FROM comment
+        WHERE comment_parent_id = #{commentId} AND board_id = #{boardId};
     </delete>
 
     <delete id="deleteByBoardId" parameterType="Board">
